@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import './Navbar.css'
 
 const Navbar: React.FC = () => {
@@ -39,21 +40,21 @@ const Navbar: React.FC = () => {
 				<div className='text-sm lg:flex-grow'></div>
 				<div>
 					<div className='text-sm lg:flex-grow'>
-						<a
-							href='#responsive-header'
+						<Link
+							to='/'
 							className='block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-8 text-lg'>
 							Home
-						</a>
-						<a
-							href='#responsive-header'
+						</Link>
+						<Link
+							to='/daily'
 							className='block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-8 text-lg'>
-							Users
-						</a>
-						<a
-							href='#responsive-header'
+							Daily Shop
+						</Link>
+						<Link
+							to='/'
 							className='block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-8 text-lg'>
 							Skins
-						</a>
+						</Link>
 					</div>
 				</div>
 			</div>

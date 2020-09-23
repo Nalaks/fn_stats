@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React, { useContext, useEffect } from 'react'
+import { ApiContext } from '../../context/ApiContext'
 
 const News: React.FC = () => {
-	const [newsItems, setNewsItems] = useState<INewsItem[] | null>(null)
-	const getNews = async () => {
-		await axios
-			.get('https://fortnite-api.com/v2/news/br')
-			.then((res) => setNewsItems(res.data.data.motds))
-	}
+	const apiContext = useContext(ApiContext)
+	const { getNews, news } = apiContext
 
 	useEffect(() => {
 		getNews()
@@ -18,8 +14,8 @@ const News: React.FC = () => {
 			<section className='text-gray-700 body-font'>
 				<div className='container px-5 py-24 mx-auto'>
 					<div className='flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4'>
-						{newsItems ? (
-							newsItems.slice(0, 3).map((item: INewsItem) => (
+						{news ? (
+							news.slice(0, 3).map((item: INewsItem) => (
 								<div
 									className='p-4 md:w-1/3 sm:mb-0 mb-6'
 									key={item.id}>

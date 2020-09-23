@@ -1,13 +1,12 @@
 import React from 'react'
-import Navbar from './components/header/Navbar'
-import News from './components/home/News'
+import { ApiState } from './context/ApiContext'
+import Routing from './Routing'
 
 const App: React.FC = () => {
 	return (
-		<div>
-			<Navbar />
-			<News />
-		</div>
+		<ApiState>
+			<Routing />
+		</ApiState>
 	)
 }
 
