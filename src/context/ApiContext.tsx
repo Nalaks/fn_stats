@@ -10,7 +10,8 @@ const ApiState = (props: {
 }): JSX.Element => {
 	const initialState: IState = {
 		news: [],
-		dailyShop: []
+		dailyShop: [],
+		featuredShop: []
 	}
 
 	const [state, dispatch] = useReducer(ApiReducer, initialState)
@@ -34,6 +35,15 @@ const ApiState = (props: {
 		)
 	}
 
+	const getFeaturedShop = async () => {
+		await axios('https://fortnite-api.com/v2/shop/br').then((res) =>
+			dispatch({
+				type: ContextTypes.GET_FEATURED_SHOP,
+				payload: res.data.data.featured.entries
+			})
+		)
+	}
+
 	// // set loading
 	// const setLoading = () => dispatch({ type: types.loading })
 
@@ -45,8 +55,10 @@ const ApiState = (props: {
 			value={{
 				news: state.news,
 				dailyShop: state.dailyShop,
+				featuredShop: state.featuredShop,
 				getNews,
-				getDailyShop
+				getDailyShop,
+				getFeaturedShop
 			}}>
 			{props.children}
 		</ApiContext.Provider>

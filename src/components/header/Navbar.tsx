@@ -5,7 +5,7 @@ import './Navbar.css'
 const Navbar: React.FC = () => {
 	const [toggle, setToggle] = useState('hidden')
 	return (
-		<nav className='flex items-center justify-between flex-wrap bg-gradient p-6 shadow-xl'>
+		<nav className='flex items-center justify-between flex-wrap bg-gradient p-6 shadow-lg sticky top-0 z-10'>
 			<div className='flex items-center flex-no-shrink text-black mr-6'>
 				{/* <svg
 					className='h-8 w-8 mr-2'
@@ -51,9 +51,9 @@ const Navbar: React.FC = () => {
 							Daily Shop
 						</Link>
 						<Link
-							to='/'
+							to='/cosmetics'
 							className='block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-8 text-lg'>
-							Skins
+							Cosmetics
 						</Link>
 					</div>
 				</div>

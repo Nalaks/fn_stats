@@ -23,16 +23,22 @@ declare interface IDetailItem {
 	images: {
 		icon: string
 	}
+	rarity: {
+		value: string
+	}
 }
 
 declare interface IState {
 	news: INewsItem[]
 	dailyShop: IDailyItem[]
+	featuredShop: IDailyItem[]
 }
 
 declare interface IContext {
 	news: INewsItem[]
 	dailyShop: IDailyItem[]
+	featuredShop: IDailyItem[]
 	getNews: () => Promise<void>
 	getDailyShop: () => Promise<void>
+	getFeaturedShop: () => Promise<void>
 }

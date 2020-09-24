@@ -2307,7 +2307,7 @@ video {
 
 .bg-purple-900 {
   --bg-opacity: 1;
-  background-color: #44337a;
+  background-colsor: #44337a;
   background-color: rgba(68, 51, 122, var(--bg-opacity));
 }
 

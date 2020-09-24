@@ -4,6 +4,7 @@ import {
 	Switch,
 	Route
 } from 'react-router-dom'
+import CosmeticsAll from './components/cosmetics/CosmeticsAll'
 import DailyShop from './components/daily/DailyShop'
 import Navbar from './components/header/Navbar'
 import News from './components/home/News'
@@ -16,6 +17,9 @@ const Routing: React.FC = () => {
 				<Switch>
 					<Route path='/daily'>
 						<DailyShop />
+					</Route>
+					<Route path='/cosmetics'>
+						<CosmeticsAll />
 					</Route>
 					<Route path='/'>
 						<News />
