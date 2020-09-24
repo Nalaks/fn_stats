@@ -11,7 +11,8 @@ const ApiState = (props: {
 	const initialState: IState = {
 		news: [],
 		dailyShop: [],
-		featuredShop: []
+		featuredShop: [],
+		allCosmetics: []
 	}
 
 	const [state, dispatch] = useReducer(ApiReducer, initialState)
@@ -44,6 +45,15 @@ const ApiState = (props: {
 		)
 	}
 
+	const getAllCosmetics = async () => {
+		await axios('https://fortnite-api.com/v2/cosmetics/br').then(
+			(res) =>
+				dispatch({
+					type: ContextTypes.GET_ALL_COSMETICS,
+					payload: res.data.data
+				})
+		)
+	}
 	// // set loading
 	// const setLoading = () => dispatch({ type: types.loading })
 
@@ -56,9 +66,11 @@ const ApiState = (props: {
 				news: state.news,
 				dailyShop: state.dailyShop,
 				featuredShop: state.featuredShop,
+				allCosmetics: state.allCosmetics,
 				getNews,
 				getDailyShop,
-				getFeaturedShop
+				getFeaturedShop,
+				getAllCosmetics
 			}}>
 			{props.children}
 		</ApiContext.Provider>

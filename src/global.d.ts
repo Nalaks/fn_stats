@@ -5,10 +5,6 @@ declare interface INewsItem {
 	body: string
 }
 
-// declare enum ContextTypes {
-// 	GET_USER = 'GET_USER'
-// }
-
 declare interface IDailyItem {
 	offerId: string
 	finalPrice: string
@@ -32,13 +28,16 @@ declare interface IState {
 	news: INewsItem[]
 	dailyShop: IDailyItem[]
 	featuredShop: IDailyItem[]
+	allCosmetics: any[]
 }
 
 declare interface IContext {
 	news: INewsItem[]
 	dailyShop: IDailyItem[]
 	featuredShop: IDailyItem[]
+	allCosmetics: any[]
 	getNews: () => Promise<void>
 	getDailyShop: () => Promise<void>
 	getFeaturedShop: () => Promise<void>
+	getAllCosmetics: () => Promise<void>
 }

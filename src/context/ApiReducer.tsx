@@ -1,7 +1,8 @@
 export enum ContextTypes {
 	GET_NEWS = 'GET_NEWS',
 	GET_DAILY_SHOP = 'GET_DAILY_SHOP',
-	GET_FEATURED_SHOP = 'GET_FEATURED_SHOP'
+	GET_FEATURED_SHOP = 'GET_FEATURED_SHOP',
+	GET_ALL_COSMETICS = 'GET_ALL_COSMETICS'
 }
 
 export default (state: IState, action: any) => {
@@ -20,6 +21,11 @@ export default (state: IState, action: any) => {
 			return {
 				...state,
 				featuredShop: action.payload
+			}
+		case ContextTypes.GET_ALL_COSMETICS:
+			return {
+				...state,
+				allCosmetics: action.payload
 			}
 		default:
 			return state
