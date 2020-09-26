@@ -1,15 +1,11 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { ApiContext } from '../../context/ApiContext'
 import './DailyShop.css'
 import vbucks from '../../assets/images/icon_vbucks.png'
 
 const Daily: React.FC = () => {
 	const apiContext = useContext(ApiContext)
-	const { getDailyShop, dailyShop } = apiContext
-
-	useEffect(() => {
-		getDailyShop()
-	}, [])
+	const { dailyShop } = apiContext
 
 	return (
 		<div className='container px-5 pt-16 mx-auto'>
@@ -21,7 +17,7 @@ const Daily: React.FC = () => {
 			</div>
 			<div className='flex flex-wrap -m-4'>
 				{dailyShop ? (
-					dailyShop.map((item) => (
+					dailyShop.daily.entries.map((item) => (
 						<div
 							className='lg:w-1/4 md:w-1/2 p-4 w-full'
 							key={item.offerId}>
@@ -32,8 +28,12 @@ const Daily: React.FC = () => {
 								}>
 								<img
 									alt={item.items[0].name}
-									className='object-contain object-center w-full h-full block'
-									src={item.items[0].images.icon}
+									className='object-contain object-center w-full h-full block border-solid border-8 border-black'
+									src={
+										item.bundle
+											? item.bundle.image
+											: item.items[0].images.icon
+									}
 								/>
 							</a>
 							<div className='mt-4'>
@@ -41,7 +41,9 @@ const Daily: React.FC = () => {
 									{item.items[0].type.displayValue}
 								</h3>
 								<h2 className='text-gray-900 title-font text-lg font-medium'>
-									{item.items[0].name}
+									{item.bundle
+										? item.bundle.name
+										: item.items[0].name}
 								</h2>
 								<p className='mt-1'>
 									<img

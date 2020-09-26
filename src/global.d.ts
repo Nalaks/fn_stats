@@ -5,9 +5,28 @@ declare interface INewsItem {
 	body: string
 }
 
-declare interface IDailyItem {
+declare interface IDailyItems {
+	daily: {
+		entries: IDailyEntries[]
+	}
+	featured: {
+		entries: IDailyEntries[]
+	}
+	specialDaily: {
+		entries: IDailyEntries[]
+	}
+	specialFeatured: {
+		entries: IDailyEntries[]
+	}
+}
+
+declare interface IDailyEntries {
 	offerId: string
 	finalPrice: string
+	bundle?: {
+		image: string
+		name: string
+	}
 	items: IDetailItem[]
 }
 
@@ -26,18 +45,15 @@ declare interface IDetailItem {
 
 declare interface IState {
 	news: INewsItem[]
-	dailyShop: IDailyItem[]
-	featuredShop: IDailyItem[]
+	dailyShop: IDailyItems
 	allCosmetics: any[]
 }
 
 declare interface IContext {
 	news: INewsItem[]
-	dailyShop: IDailyItem[]
-	featuredShop: IDailyItem[]
+	dailyShop: IDailyItems
 	allCosmetics: any[]
 	getNews: () => Promise<void>
 	getDailyShop: () => Promise<void>
-	getFeaturedShop: () => Promise<void>
 	getAllCosmetics: () => Promise<void>
 }

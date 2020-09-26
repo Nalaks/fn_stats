@@ -10,8 +10,20 @@ const ApiState = (props: {
 }): JSX.Element => {
 	const initialState: IState = {
 		news: [],
-		dailyShop: [],
-		featuredShop: [],
+		dailyShop: {
+			daily: {
+				entries: []
+			},
+			featured: {
+				entries: []
+			},
+			specialDaily: {
+				entries: []
+			},
+			specialFeatured: {
+				entries: []
+			}
+		},
 		allCosmetics: []
 	}
 
@@ -31,16 +43,7 @@ const ApiState = (props: {
 		await axios('https://fortnite-api.com/v2/shop/br').then((res) =>
 			dispatch({
 				type: ContextTypes.GET_DAILY_SHOP,
-				payload: res.data.data.daily.entries
-			})
-		)
-	}
-
-	const getFeaturedShop = async () => {
-		await axios('https://fortnite-api.com/v2/shop/br').then((res) =>
-			dispatch({
-				type: ContextTypes.GET_FEATURED_SHOP,
-				payload: res.data.data.featured.entries
+				payload: res.data.data
 			})
 		)
 	}
@@ -65,11 +68,9 @@ const ApiState = (props: {
 			value={{
 				news: state.news,
 				dailyShop: state.dailyShop,
-				featuredShop: state.featuredShop,
 				allCosmetics: state.allCosmetics,
 				getNews,
 				getDailyShop,
-				getFeaturedShop,
 				getAllCosmetics
 			}}>
 			{props.children}

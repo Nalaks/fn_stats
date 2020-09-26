@@ -3,7 +3,7 @@ import { ApiContext } from '../../context/ApiContext'
 import './DailyShop.css'
 import vbucks from '../../assets/images/icon_vbucks.png'
 
-const Featured: React.FC = () => {
+const SpecialFeatured: React.FC = () => {
 	const apiContext = useContext(ApiContext)
 	const { dailyShop } = apiContext
 
@@ -11,13 +11,13 @@ const Featured: React.FC = () => {
 		<div className='container px-5 py-16 mx-auto'>
 			<div className='lg:w-1/2 w-full mb-6'>
 				<h1 className='sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900'>
-					Featured Items
+					Special Featured Items
 				</h1>
 				<div className='h-1 w-20 bg-indigo-500 rounded'></div>
 			</div>
 			<div className='flex flex-wrap -m-4'>
 				{dailyShop ? (
-					dailyShop.featured.entries.map((item) => (
+					dailyShop.specialFeatured.entries.map((item) => (
 						<div
 							className='lg:w-1/4 md:w-1/2 p-4 w-full'
 							key={item.offerId}>
@@ -64,4 +64,4 @@ const Featured: React.FC = () => {
 	)
 }
 
-export default Featured
+export default SpecialFeatured

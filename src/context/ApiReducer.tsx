@@ -17,11 +17,6 @@ export default (state: IState, action: any) => {
 				...state,
 				dailyShop: action.payload
 			}
-		case ContextTypes.GET_FEATURED_SHOP:
-			return {
-				...state,
-				featuredShop: action.payload
-			}
 		case ContextTypes.GET_ALL_COSMETICS:
 			return {
 				...state,
